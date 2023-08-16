@@ -1,10 +1,14 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(Home());
+  runApp(const Home());
 }
 
 class Home extends StatelessWidget {
+  const Home({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -14,16 +18,16 @@ class Home extends StatelessWidget {
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Home'),
+          title: const Text('Home'),
         ),
         body: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             image: DecorationImage(
               image: AssetImage('assets/home.png'),
               fit: BoxFit.cover,
             ),
           ),
-          child: Center(
+          child: const Center(
             child: DropdownDatePickerExample(),
           ),
         ),
@@ -33,8 +37,10 @@ class Home extends StatelessWidget {
 }
 
 class DropdownDatePickerExample extends StatefulWidget {
+  const DropdownDatePickerExample({super.key});
+
   @override
-  _DropdownDatePickerExampleState createState() =>
+  State<DropdownDatePickerExample> createState() =>
       _DropdownDatePickerExampleState();
 }
 
@@ -60,11 +66,11 @@ class _DropdownDatePickerExampleState extends State<DropdownDatePickerExample> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(16),
+      padding: const EdgeInsets.all(16),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
-          Container(
+          SizedBox(
             width: 110,
             child: DropdownButton<String>(
               value: dropdownValue1,
@@ -90,19 +96,19 @@ class _DropdownDatePickerExampleState extends State<DropdownDatePickerExample> {
               }).toList(),
             ),
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           if (selectedDate != null)
             Text(
               'Selected Date: ${selectedDate!.toIso8601String().split('T')[0]}',
-              style: TextStyle(fontSize: 16),
+              style: const TextStyle(fontSize: 16),
             ),
           ElevatedButton(
             onPressed: () => _selectDate(context),
-            child: Text('Select Date'),
+            child: const Text('Select Date'),
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           if (dropdownValue3.isNotEmpty)
-            Container(
+            SizedBox(
               width: 170,
               child: DropdownButton<String>(
                 value: dropdownValue3,
@@ -126,8 +132,8 @@ class _DropdownDatePickerExampleState extends State<DropdownDatePickerExample> {
                 }).toList(),
               ),
             ),
-          SizedBox(height: 16),
-          Container(
+          const SizedBox(height: 16),
+          SizedBox(
             width: 100,
             child: ElevatedButton(
               onPressed: () {
@@ -139,7 +145,7 @@ class _DropdownDatePickerExampleState extends State<DropdownDatePickerExample> {
                 }
                 print('Dropdown 3: $dropdownValue3');
               },
-              child: Text('Submit'),
+              child: const Text('Submit'),
             ),
           ),
         ],
